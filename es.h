@@ -2,7 +2,7 @@
 #include <string.h>
 
 
-typedef int T_Elt; //TAD
+typedef char T_Elt; //TAD
 
 
 // ou
