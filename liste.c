@@ -168,8 +168,7 @@ T_Maille *newMaille(T_Elt e, T_Maille * m){
 
     T_Maille *m2;
     m2 = (T_Maille *)malloc(sizeof(T_Maille));
-    m2->elt = (char *)malloc(sizeof(char)*26);
-    affecterElt(m2->elt, e);
+    affecterElt(&(m2->elt), e);
     m2 -> suivant = m;
     return m2;
 }
@@ -182,10 +181,8 @@ int afficherListe(T_Maille * m){
     while (m != NULL) {
         afficherElt(m->elt);
         m = m->suivant;
-        if (m != NULL) printf("-");
+        if (m != NULL) printf(" - ");
     }
-    
-    printf("\n");
     return 1;    
 }
 
@@ -222,24 +219,24 @@ int appartient(T_Elt e, T_Maille * m){
 }
 
 T_Maille *insererAvecOrdre(T_Elt e, T_Maille * m){
-   printf("%s\n", e);
     if (listeVide(m)) {
-        T_Maille *test = insererEnTete(&e, m);
+        T_Maille *test = insererEnTete(e, m);
         return test;
     }
 
-    if (strcmp(e,m->suivant->elt)>0) {
-        return insererEnTete(&e, m);
+    if (strcmp(e,m->elt)<0) {
+        return insererEnTete(e,m);
     }
 
     T_Maille *tete = m;
-    while (m->suivant != NULL && strcmp(e,m->suivant->elt)<0) {
+    while (m->suivant != NULL && strcmp(e,m->elt)>0) {
         m = m->suivant;
     }
     m->suivant = newMaille(e, m->suivant);
 
     return tete;
 }
+
 
 T_Maille *supprimerElement(T_Elt e, T_Maille *m){
     if (listeVide(m)) {

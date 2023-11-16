@@ -26,13 +26,13 @@ scanf("%s",e);
 }
 void afficherElt(T_Elt e)
 {
-printf("\n%s",e);
+printf("%s",e);
 }
 
 
-void affecterElt(T_Elt d,T_Elt s)
+void affecterElt(T_Elt * d,T_Elt * s)
 {
-strcpy(d,s);
+strcpy(*d,*s);
 }
 #endif
 
