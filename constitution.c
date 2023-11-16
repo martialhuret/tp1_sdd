@@ -14,7 +14,7 @@ int main()
 {
     
     T_Maille *l=NULL;
-    T_Elt e;
+        T_Elt e;
     
     int i,numLigne=1;
     
@@ -44,7 +44,7 @@ int main()
            }
         }while((c!=' ' && c!='\n' && c!=EOF));
         mot[i]='\0';
-    
+  
         n++;
         if (strcmp(mot," ")!=0 && strcmp(mot,"\n")!=0 && strcmp(mot,"")!=0 ) 
         {
@@ -52,11 +52,11 @@ int main()
         
             printf("\nlu en ligne %d : -%s-  ", (c=='\n'?numLigne-1:numLigne), strtoupper(motMAJ,mot) );  //  getchar();
             
-            l = insererAvecOrdre(motMAJ, l);
+            l = inverser
                 
-            pmotMAJ=motMAJ;
-            if (strchr(mot,'\'')==(mot+1)) {pmotMAJ=motMAJ+2; printf(" -->> -%s-",pmotMAJ);}
-            if (strchr(pmotMAJ,'.')!=NULL || strchr(pmotMAJ,',')!=NULL) {pmotMAJ[strlen(pmotMAJ)-1]='\0'; printf(" -->> -%s-",pmotMAJ);}
+                pmotMAJ=motMAJ;
+                if (strchr(mot,'\'')==(mot+1)) {pmotMAJ=motMAJ+2; printf(" -->> -%s-",pmotMAJ);}
+                if (strchr(pmotMAJ,'.')!=NULL || strchr(pmotMAJ,',')!=NULL) {pmotMAJ[strlen(pmotMAJ)-1]='\0'; printf(" -->> -%s-",pmotMAJ);}
                 
         }
             
@@ -67,6 +67,9 @@ int main()
 
     fclose(fic);
     
+    
+    
+
+    
     return 0;
 }
-
