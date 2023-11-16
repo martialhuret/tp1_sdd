@@ -1,0 +1,16 @@
+c=gcc
+op=-Wall -Wextra
+
+all : constitution
+
+constitution : constitution.c es.o liste.o 
+	$(c) $(op)  constitution.c es.o liste.o -o constitution
+
+liste.o : liste.c liste.h
+	$(c) $(op) -c liste.c	
+es.o : es.c es.h
+	$(c) $(op) -c es.c	
+
+clean :
+	rm -f *.o
+	rm -f constitution

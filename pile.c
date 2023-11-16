@@ -2,33 +2,22 @@
 
 
 
-void testPile(T_PileD * P)
-{
-    /*
-    T_Elt z;
-    initPile(P);
-    empiler(P,1.8);
-    empiler(P,2);
-    empiler(P,3.4);
-    empiler(P,4);
-    empiler(P,5);
-    empiler(P,6);
-    afficherPile(P);
-    depiler(P,&z);
-    afficherPile(P);
-    afficherElt(&z);
-    */
+void testPile(T_PileD * P1, T_PileD * P2, T_PileD * P3)
+{ 
+    int i = 0;
 
+    initPile(P1);
+    initPile(P2);
+    initPile(P3);
+
+    empiler(P1, 3);
+    empiler(P1, 2);
+    empiler(P1, 1);
     
-    initPile(P);
-    char string[20];
-    strcpy(string, "(3+4)*(5-2)");
-    toRPN(string,P);
-    printf("\n");
-    
-    
-    //tourDeHanoi(3);
-    
+    Hanoi(P1, P2, P3, 3, P1, P2, P3, &i);
+
+    printf("Nombre de mouvements : %d\n", i);
+
 }
 
 void initPile( T_PileD * P)
@@ -101,12 +90,13 @@ T_Elt sommet(const  T_PileD *P)
 
 int hauteur(const  T_PileD *P)
 {
-return 0;
+    return P->nbElts;
 }
 
 
 void afficherPile(  T_PileD *P)
 {
+
     //afficher avec empliler et depiler
     T_PileD P2;
     initPile(&P2);
@@ -186,7 +176,45 @@ void toRPN(char * string, T_PileD *P){
 
 }
 
+void Hanoi (T_PileD *A, T_PileD *B, T_PileD *C, int n,T_PileD *p1, T_PileD *p2, T_PileD *p3, int *i){
+    *i+=1;
+    if (n == 1){
+        depiler(A, &n);
+        empiler(C, n);
+        afficher3pile(p1, p2, p3);
+    }
+    else {
+        Hanoi(A, C, B, n-1,p1,p2,p3,i);
+        depiler(A, &n);
+        empiler(C, n);
+        afficher3pile(p1, p2, p3);
+        Hanoi(B, A, C, n-1,p1,p2,p3,i);
+          
+    }
+}
 
-void tourDeHanoi(int N){
+int max(int a, int b, int c){
+    if (a > b && a > c){
+        return a;
+    }
+    else if (b > a && b > c){
+        return b;
+    }
+    else {
+        return c;
+    }
+}
 
+void afficher3pile(T_PileD *A, T_PileD *B, T_PileD *C) {
+    int max_height = max(hauteur(A), hauteur(B), hauteur(C));
+
+    for (int i = max_height - 1; i >= 0; i--) {
+        char elt_A = (i < hauteur(A)) ? A->Elts[i] + '0' : ' ';
+        char elt_B = (i < hauteur(B)) ? B->Elts[i] + '0' : ' ';
+        char elt_C = (i < hauteur(C)) ? C->Elts[i] + '0' : ' ';
+
+        printf("%c | %c | %c \n", elt_A, elt_B, elt_C);
+       
+    }
+    printf("----------\n\n");
 }

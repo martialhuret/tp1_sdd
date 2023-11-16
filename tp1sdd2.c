@@ -2,6 +2,7 @@
 
 #include "pile.h"
 #include "file.h"
+#include "liste.h"
 
 
 int menu()
@@ -21,6 +22,7 @@ return choix;
 
 int main()
 {
+T_Maille *maListe=NULL;
 T_File mafile;
 T_PileD mapile;
 int chx;
@@ -37,7 +39,7 @@ switch (chx)
 		//testFile(&mafile); //TP9 partie 1 : à ecrire 
 		break;
 	case 2 : //testez toutes vos fonctions par un jeu de test de votre choix
-		testPile(&mapile); //TP9 partie 1 : à ecrire 
+		//testPile(&mapile); //TP9 partie 1 : à ecrire 
 		break; 
 	case 3 : 
 		//scanf("%s",chaine); //une chaine de longueur <=MAX

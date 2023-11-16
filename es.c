@@ -1,5 +1,7 @@
 #include "es.h"
 
+//#define UTILISE_INT 
+#define UTILISE_CHAR
 
 /*
 // lorsque T_ELt est un int  (c'est le case de notre TP)  
@@ -17,45 +19,40 @@ void affecterElt(T_Elt *d,T_Elt *s)
 }
 */
 
+#ifdef UTILISE_CHAR
+void saisirElt(T_Elt e)
+{
+scanf("%s",e);
+}
+void afficherElt(T_Elt e)
+{
+printf("\n%s",e);
+}
 
+
+void affecterElt(T_Elt d,T_Elt s)
+{
+strcpy(d,s);
+}
+#endif
+
+#ifdef UTILISE_INT
 void saisirElt(T_Elt *e)
 {
-scanf("%c",e);
+scanf("%d",e);
 }
 void afficherElt(T_Elt *e)
 {
-printf("%c",*e);
+printf("%d",*e);
 }
 void affecterElt(T_Elt *d,T_Elt *s)
 {
 *d=*s;
 }
+#endif
 
 
 
-
-
-
-
-
-
-
-// lorsque T_ELt est un char  (peut être un jour)
-/*
-void saisirElt(T_Elt *e)
-{
-scanf("%c",e);
-}
-void afficherElt(T_Elt *e)
-{
-printf("\n%c",*e);
-}
-
-void affecterElt(T_Elt *d,T_Elt *s)
-{
-*d=*s;
-}
-*/
 
 
 
